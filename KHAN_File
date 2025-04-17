@@ -1,0 +1,51 @@
+from fpdf import FPDF
+
+class RapportKHAN(FPDF):
+    def header(self):
+        self.set_font("Arial", 'B', 14)
+        self.cell(0, 10, 'CLASSIFICATION : SECRET DEFENSE', 0, 1, 'C')
+        self.ln(5)
+
+pdf = RapportKHAN()
+pdf.add_page()
+pdf.set_font("Arial", 'B', 16)
+pdf.cell(0, 10, "RAPPORT DE CONFIDENTIALITE", ln=True, align='C')
+pdf.ln(10)
+
+pdf.set_font("Arial", 'B', 12)
+pdf.cell(0, 10, "Nom de Code : KHAN", ln=True)
+pdf.cell(0, 10, "Véritable Identité : ██████████████████████████", ln=True)
+pdf.ln(10)
+
+pdf.set_font("Arial", '', 12)
+contenu = """
+Statut : INCONNU
+Dernière Localisation : INCONNUE
+Classification : Niveau Black - Accès Ultra Restreint
+
+Profil :
+Individu opérant sous le pseudonyme "KHAN". Contrôle un empire numérique grâce à des comptes secondaires appelés "ombres".
+Style de jeu inspiré de Solo Leveling.
+
+Méthodes Utilisées :
+- Stratégie militaire numérique avancée
+- Gestion multi-comptes ultra-organisée
+- Investissements massifs en ressources
+- Aucune information personnelle vérifiable
+
+Hypothèses d'Identité Réelle :
+- Ancien militaire spécialisé
+- Homme d'affaires opérant dans l'ombre
+- Analyste ou espion numérique professionnel
+
+Conclusion Officielle :
+KHAN est classé menace stratégique de premier ordre.
+Observation recommandée.
+Intervention déconseillée sans préparation maximale.
+
+Fin du Rapport.
+"""
+
+pdf.multi_cell(0, 8, contenu)
+
+pdf.output("Rapport_KHAN.pdf")
